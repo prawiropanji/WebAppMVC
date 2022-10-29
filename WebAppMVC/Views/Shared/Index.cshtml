@@ -1,0 +1,16 @@
+﻿@model WebAppMVC.Models.User
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>Employee</h2>
+    <p>@Model.Employee.FullName</p>
+    <h2>Email</h2>
+    <p>@Model.Employee.Email</p>
+    <h2>Role</h2>
+    <p>@Model.Role.Name</p>
+   @* <p>@Model.Role.Name</p>*@
+</div>

@@ -1,0 +1,36 @@
+﻿<h1>Register Form</h1>
+
+<h4>Create your new account</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label"> Enter Full Name</label>
+                <input name="fullname" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Enter Birth Date</label>
+                <input type="date" name="birthdate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Enter Email</label>
+                <input name="email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Enter Password</label>
+                <input type="password" name="password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Select Role</label>
+                <select name="roleid" asp-items="@ViewBag.Options"  class="form-control"></select>
+            </div>
+   
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
