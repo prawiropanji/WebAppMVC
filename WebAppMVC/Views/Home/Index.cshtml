@@ -12,7 +12,7 @@
     <h1>@Model.Role</h1>
 
     @if(Model.Email != null){
-        <a asp-controller="Account" asp-action="ChangePassword" asp-route-email="@Model.Email">Change Password</a>
+        <a asp-controller="Account" asp-action="Change_Password" asp-route-email="@Model.Email">Change Password</a>
     }
 
 </div>

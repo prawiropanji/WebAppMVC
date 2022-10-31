@@ -75,13 +75,16 @@ namespace WebAppMVC.Controllers
 
         }
 
+        [ActionName("Change_Password")]
         public IActionResult ChangePassword(string email)
         {
             var data = _myContext.Employees.Where(e => e.Email == email).Single();
-            return View(data);
+            return View("ChangePassword", data);
         }
 
+
         [HttpPost]
+        
         public IActionResult ChangePassword(string newpassword, string oldpassword, string email)
         {
             var user = _myContext.Users.Include(u => u.Employee).FirstOrDefault(u => u.Employee.Email.Equals(email));
