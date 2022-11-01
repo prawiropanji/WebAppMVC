@@ -14,10 +14,10 @@ namespace WebAppMVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(ResponseLogin responseLogin)
+        public IActionResult Index()
         {
 
-            return View(responseLogin);
+            return View();
         }
 
         public IActionResult Privacy()

@@ -1,4 +1,4 @@
-﻿@model WebAppMVC.Models.ResponseLogin;
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,12 +7,14 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
-    <h1>@Model.Email</h1>
-    <h1>@Model.FullName</h1>
-    <h1>@Model.Role</h1>
+    <h2>@HttpContextAccessor.HttpContext.Session.GetString("Email")</h2>
 
-    @if(Model.Email != null){
-        <a asp-controller="Account" asp-action="Change_Password" asp-route-email="@Model.Email">Change Password</a>
+    <h2>@HttpContextAccessor.HttpContext.Session.GetString("FullName")</h2>
+
+    <h2>@HttpContextAccessor.HttpContext.Session.GetString("Role")</h2>
+
+    @if (HttpContextAccessor.HttpContext.Session.GetString("Email") != null){
+        <a asp-action="Change_Password" asp-controller="Account">Change Password</a>
     }
 
 </div>

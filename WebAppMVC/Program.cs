@@ -7,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnectionString"))); 
+builder.Services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(15)); //Configure Session State
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();//create single instance to 
+
+
 
 var app = builder.Build();
 
@@ -24,6 +29,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 
 app.MapControllerRoute(

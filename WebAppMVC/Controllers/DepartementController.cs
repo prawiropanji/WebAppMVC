@@ -14,9 +14,6 @@ namespace WebAppMVC.Controllers
         {
             _myContext = myContext;
 
-
-            
-
         }
 
         //Get All

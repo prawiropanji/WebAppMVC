@@ -15,8 +15,22 @@ namespace WebAppMVC.Controllers
         //Get All
         public IActionResult Index()
         {
-            var data = _myContext.Divisions.ToList();
-            return View(data);
+           var Role = HttpContext.Session.GetString("Role");
+            
+                if (Role == "Admin")
+                {
+                    var data = _myContext.Divisions.ToList();
+                    return View(data);
+                }
+                else if (Role == null)
+                {
+                    return RedirectToAction("UnAuthorized", "Error");
+                }
+            
+            
+                return RedirectToAction("Forbidden", "Error");
+           
+
         }
 
         //GetBy ID
@@ -36,6 +50,7 @@ namespace WebAppMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Division division)
         {
+            division.CreatedBy = HttpContext.Session.GetString("FullName");
             _myContext.Divisions.Add(division);
             var result = _myContext.SaveChanges();
             if(result > 0)
